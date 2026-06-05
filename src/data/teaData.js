@@ -1,59 +1,116 @@
-// 차 기본 데이터 파일
-// - 화면 로직 없이 "데이터"만 관리한다.
-// - 다른 기능(추천, 퀴즈 등)에서도 재사용할 수 있도록 순수 배열 형태로 작성한다.
-// - 각 차 객체는 고유한 id 를 가지며, 학습에 필요한 정보를 모두 담고 있다.
+import greenTea from "../assets/tea/green-tea.jpg";
+import blackTea from "../assets/tea/black-tea.jpg";
+import oolongTea from "../assets/tea/oolong-tea.jpg";
+import whiteTea from "../assets/tea/white-tea.jpg";
+import puerTea from "../assets/tea/puer-tea.jpg";
+import jasmineTea from "../assets/tea/jasmine-tea.jpg";
+import matchaTea from "../assets/tea/matcha.jpg";
+import chamomileTea from "../assets/tea/chamomile-tea.jpg";
 
-const teaData = [
+export const teaList = [
   {
     id: 1,
     name: "녹차",
-    description: "산뜻하고 깔끔한 맛이 특징인 대표적인 차",
-    waterTemp: "70~80℃",
-    steepTime: "1~2분",
-    taste: "깔끔함, 은은한 쌉싸름함",
-    aroma: "풀잎 향, 신선한 향",
-    tip: "너무 뜨거운 물을 사용하면 쓴맛이 강해질 수 있다."
+    image: greenTea,
+    shortDescription: "신선한 풀향과 깔끔한 맛이 특징인 대표적인 차",
+    description:
+      "발효하지 않은 차로 산뜻한 향과 은은한 감칠맛을 즐길 수 있습니다.",
+    temperature: 70,
+    brewTime: 90,
+    leafAmount: "2g",
+    flavor: "담백하고 산뜻함",
+    aroma: "풀향",
+    storage: "직사광선을 피해 밀폐 보관",
   },
   {
     id: 2,
     name: "홍차",
-    description: "깊고 진한 향과 맛을 가진 발효차",
-    waterTemp: "90~95℃",
-    steepTime: "3~5분",
-    taste: "진함, 묵직함, 약간의 떫은맛",
-    aroma: "달콤한 향, 묵직한 향",
-    tip: "우유나 설탕과 함께 마셔도 잘 어울린다."
+    image: blackTea,
+    shortDescription: "진한 풍미와 달콤한 향이 매력적인 차",
+    description: "완전 발효차로 깊고 풍부한 맛과 향을 즐길 수 있습니다.",
+    temperature: 95,
+    brewTime: 180,
+    leafAmount: "2.5g",
+    flavor: "진하고 달콤함",
+    aroma: "꽃향과 과일향",
+    storage: "건조한 곳에 밀폐 보관",
   },
   {
     id: 3,
     name: "우롱차",
-    description: "녹차와 홍차의 중간 정도로 발효된 차",
-    waterTemp: "85~90℃",
-    steepTime: "2~3분",
-    taste: "부드러움, 구수함",
-    aroma: "꽃향, 고소한 향",
-    tip: "여러 번 우려 마셔도 향과 맛이 잘 유지된다."
+    image: oolongTea,
+    shortDescription: "녹차와 홍차의 중간 매력을 가진 반발효차",
+    description: "은은한 꽃향과 부드러운 단맛이 특징입니다.",
+    temperature: 90,
+    brewTime: 150,
+    leafAmount: "3g",
+    flavor: "부드럽고 고소함",
+    aroma: "난초향",
+    storage: "서늘하고 건조한 곳에 밀폐 보관",
   },
   {
     id: 4,
-    name: "허브차",
-    description: "허브, 꽃, 과일 등을 이용해 만든 향 중심의 차",
-    waterTemp: "90~100℃",
-    steepTime: "5~7분",
-    taste: "부드러움, 은은한 단맛",
-    aroma: "꽃향, 과일향, 허브향",
-    tip: "카페인이 없는 종류가 많아 저녁에 마시기 좋다."
+    name: "백차",
+    image: whiteTea,
+    shortDescription: "최소 가공으로 본연의 향을 살린 차",
+    description: "은은하고 부드러운 맛을 즐길 수 있는 고급 차입니다.",
+    temperature: 80,
+    brewTime: 240,
+    leafAmount: "2g",
+    flavor: "은은하고 달콤함",
+    aroma: "꽃향",
+    storage: "습기를 피해 밀폐 보관",
   },
   {
     id: 5,
     name: "보이차",
-    description: "숙성 과정을 거쳐 깊고 구수한 맛을 내는 차",
-    waterTemp: "95~100℃",
-    steepTime: "2~4분",
-    taste: "깊음, 구수함, 묵직함",
-    aroma: "흙내음, 나무 향, 숙성 향",
-    tip: "처음 마실 때는 짧게 우려 맛을 조절하는 것이 좋다."
-  }
+    image: puerTea,
+    shortDescription: "깊고 묵직한 풍미를 가진 후발효차",
+    description: "숙성 과정을 거쳐 독특한 향과 맛을 지닙니다.",
+    temperature: 100,
+    brewTime: 240,
+    leafAmount: "4g",
+    flavor: "깊고 묵직함",
+    aroma: "흙향",
+    storage: "통풍이 잘되는 건조한 곳 보관",
+  },
+  {
+    id: 6,
+    name: "자스민차",
+    image: jasmineTea,
+    shortDescription: "우아한 꽃향이 가득한 향차",
+    description: "녹차에 자스민 꽃향을 입혀 향긋함이 뛰어납니다.",
+    temperature: 85,
+    brewTime: 180,
+    leafAmount: "2g",
+    flavor: "부드럽고 향긋함",
+    aroma: "자스민 꽃향",
+    storage: "향이 날아가지 않도록 밀폐 보관",
+  },
+  {
+    id: 7,
+    name: "말차",
+    image: matchaTea,
+    shortDescription: "곱게 간 녹차 가루로 만드는 일본 전통차",
+    description: "진한 감칠맛과 선명한 녹색이 특징입니다.",
+    temperature: 80,
+    brewTime: 60,
+    leafAmount: "2g",
+    flavor: "진하고 감칠맛",
+    aroma: "신선한 풀향",
+    storage: "냉장 보관 권장",
+  },
+  {
+    id: 8,
+    name: "캐모마일차",
+    image: chamomileTea,
+    shortDescription: "편안한 휴식을 위한 허브차",
+    description: "부드럽고 달콤한 향으로 많은 사랑을 받습니다.",
+    temperature: 95,
+    brewTime: 300,
+    leafAmount: "2g",
+    flavor: "부드럽고 달콤함",
+    aroma: "사과향",
+    storage: "직사광선을 피해 밀폐 보관",
+  },
 ];
-
-export default teaData;
