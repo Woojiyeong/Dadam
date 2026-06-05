@@ -9,7 +9,7 @@ function Sidebar() {
       </div>
 
       <nav className="sidebar-menu">
-        <Link to="/">홈</Link>
+        <Link to="/home">홈</Link>
         <Link to="/timer">타이머</Link>
         <Link to="/record">기록장</Link>
       </nav>

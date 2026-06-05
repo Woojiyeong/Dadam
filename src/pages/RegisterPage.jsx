@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Login.css";
+import "./LoginPage.css";
 
-function Register() {
+function RegisterPage() {
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
@@ -81,4 +81,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default RegisterPage;

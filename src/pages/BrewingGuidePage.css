@@ -1,0 +1,109 @@
+.guide-header {
+  margin-bottom: 30px;
+}
+
+.back-button {
+  border: none;
+  background: none;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  color: #2f4f4f;
+
+  margin-bottom: 15px;
+}
+
+.back-button:hover {
+  opacity: 0.7;
+}
+
+.brewing-guide-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+.brewing-guide-title {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #2f4f4f;
+}
+
+.brewing-info {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.brewing-info-item {
+  flex: 1;
+
+  background: #fff;
+  border-radius: 12px;
+
+  padding: 20px;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.brewing-info-label {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 8px;
+}
+
+.brewing-info-value {
+  font-size: 20px;
+  font-weight: bold;
+  color: #2f4f4f;
+}
+
+.guide-button-group {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+
+  margin-top: 30px;
+}
+
+.guide-button {
+  border: none;
+
+  padding: 12px 24px;
+
+  border-radius: 10px;
+
+  background: #2f4f4f;
+  color: white;
+
+  cursor: pointer;
+
+  font-size: 15px;
+}
+
+.guide-button:hover {
+  opacity: 0.9;
+}
+
+.guide-button:disabled {
+  background: #bdbdbd;
+  cursor: not-allowed;
+}
+
+.guide-complete {
+  margin-top: 25px;
+
+  text-align: center;
+
+  font-size: 18px;
+  font-weight: bold;
+
+  color: #2e7d32;
+}

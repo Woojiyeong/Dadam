@@ -1,13 +1,15 @@
 import { useNavigate, Navigate } from "react-router-dom";
 import { useState } from "react";
-import './Home.css';
-import Sidebar from "../components/Sidebar";
-import TeaCard from "../components/TeaCard";
+import './HomePage.css';
+import Sidebar from "../components/Sidebar.jsx";
+import TeaCard from "../components/TeaCard.jsx";
+import TeaDetail from "../components/TeaDetail.jsx";
 import { teaList } from "../data/teaData.js";
 
-function Home() {
+function HomePage() {
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
+  const [selectedTea, setSelectedTea] = useState(null);
 
   const currentUser = JSON.parse(
     localStorage.getItem("currentUser")
@@ -59,13 +61,22 @@ function Home() {
           />
 
           <div className="tea-grid">
-            {filteredTea.map((tea) => (
-              <TeaCard
-                key={tea.id}
-                tea={tea}
+              {filteredTea.map((tea) => (
+                <div
+                  key={tea.id}
+                  onClick={() => setSelectedTea(tea)}
+                >
+                  <TeaCard tea={tea} />
+                </div>
+              ))}
+            </div>
+
+            {selectedTea && (
+              <TeaDetail
+                selectedTea={selectedTea}
+                onClose={() => setSelectedTea(null)}
               />
-            ))}
-          </div>
+            )}
 
         </div>
       </div>
@@ -73,4 +84,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default HomePage;

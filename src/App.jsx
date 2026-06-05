@@ -4,9 +4,11 @@ import {
   Route,
 } from "react-router-dom";
 
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
+import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import BrewingGuidePage from "./pages/BrewingGuidePage";
+import TimerPage from "./pages/TimerPage";
 
 function App() {
   return (
@@ -14,17 +16,27 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Login />}
+          element={<LoginPage />}
         />
 
         <Route
           path="/register"
-          element={<Register />}
+          element={<RegisterPage />}
         />
         
         <Route
           path="/home"
-          element={<Home />}
+          element={<HomePage />}
+        />
+
+        <Route
+          path="/brewing/:id"
+          element={<BrewingGuidePage />}
+        />
+
+        <Route
+          path="/timer"
+          element={<TimerPage />}
         />
       </Routes>
     </BrowserRouter>

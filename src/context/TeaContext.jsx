@@ -1,5 +1,5 @@
 import { createContext, useContext, useReducer, useEffect, useRef } from 'react';
-import teaList from '../data/teaList';
+import { teaList } from "../data/teaData";
 
 const STORAGE_KEY = 'dadam_timer_state';
 
