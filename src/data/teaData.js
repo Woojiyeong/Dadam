@@ -7,7 +7,7 @@ import jasmineTea from "../assets/tea/jasmine-tea.jpg";
 import matchaTea from "../assets/tea/matcha.jpg";
 import chamomileTea from "../assets/tea/chamomile-tea.jpg";
 
-export const teaList = [
+const teaData = [
   {
     id: 1,
     name: "녹차",
@@ -114,3 +114,5 @@ export const teaList = [
     storage: "직사광선을 피해 밀폐 보관",
   },
 ];
+
+export default teaData;
