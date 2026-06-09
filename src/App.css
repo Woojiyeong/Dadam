@@ -1,446 +1,232 @@
-/* =========================================================
-   차 종류 선택 및 학습 페이지 스타일
-   - 클래스명을 기능별로 명확하게 작성해 협업 시 이해하기 쉽게 한다.
-   - 차분하고 깔끔한 분위기 + 모바일 반응형으로 작성한다.
-   ========================================================= */
-
-/* index.css 의 데모용 #root 제약(고정 1126px, 가운데 정렬, 테두리)을
-   학습 페이지 레이아웃에 맞게 덮어쓴다. */
 #root {
   width: 100%;
   max-width: 100%;
   margin: 0;
-  text-align: left;
   border-inline: none;
-}
-
-/* 전체 페이지 컨테이너 */
-.tea-learning-page {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 32px 20px 64px;
-  box-sizing: border-box;
-}
-
-/* 페이지 제목 */
-.tea-learning-title {
-  font-size: 32px;
-  text-align: center;
-  margin: 0 0 24px;
-}
-
-/* ---------------- 검색 영역 ---------------- */
-.tea-search {
-  margin-bottom: 24px;
-}
-
-.tea-search-input {
-  width: 100%;
-  padding: 12px 16px;
-  font-size: 16px;
-  border: 1px solid var(--border, #ddd);
-  border-radius: 10px;
-  box-sizing: border-box;
-  background: var(--bg, #fff);
-  color: var(--text-h, #222);
-}
-
-.tea-search-input:focus {
-  outline: none;
-  border-color: #5b8266;
-  box-shadow: 0 0 0 3px rgba(91, 130, 102, 0.15);
-}
-
-/* ---------------- 본문 레이아웃 ---------------- */
-/* 데스크탑: 차 목록(좌) + 상세 정보(우) 2단 구성 */
-.tea-learning-body {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  align-items: start;
-}
-
-/* ---------------- 차 목록 / 카드 ---------------- */
-.tea-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 12px;
-}
-
-/* 카드는 클릭 가능한 버튼이다. 기본 버튼 스타일을 초기화한다. */
-.tea-card {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
   text-align: left;
-  padding: 16px;
-  border: 1px solid var(--border, #ddd);
-  border-radius: 12px;
-  background: var(--bg, #fff);
-  cursor: pointer;
-  transition: border-color 0.15s, box-shadow 0.15s, transform 0.05s;
 }
 
-.tea-card:hover {
-  border-color: #5b8266;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-}
-
-.tea-card:active {
-  transform: translateY(1px);
-}
-
-/* 선택된 카드 강조: 테두리 + 배경색으로 구분 */
-.tea-card-selected {
-  border-color: #5b8266;
-  border-width: 2px;
-  background: rgba(91, 130, 102, 0.1);
-}
-
-.tea-card-name {
-  margin: 0;
-  font-size: 18px;
-  color: var(--text-h, #1a1a1a);
-}
-
-.tea-card-description {
-  margin: 0;
-  font-size: 13px;
-  line-height: 1.5;
-  color: var(--text, #666);
-}
-
-/* 검색 결과 없음 안내 문구 */
-.tea-empty-result {
-  padding: 24px;
-  text-align: center;
-  color: var(--text, #888);
-}
-
-/* ---------------- 상세 정보 ---------------- */
-.tea-detail {
-  padding: 24px;
-  border: 1px solid var(--border, #ddd);
-  border-radius: 12px;
-  background: var(--bg, #fff);
-}
-
-/* 선택된 차가 없을 때의 안내 박스 */
-.tea-detail-empty {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 160px;
-  color: var(--text, #888);
-}
-
-.tea-detail-name {
-  margin: 0 0 8px;
-  font-size: 24px;
-}
-
-.tea-detail-description {
-  margin: 0 0 20px;
-  color: var(--text, #666);
-}
-
-/* 항목 목록 (물온도/우림시간/맛/향) */
-.tea-detail-list {
-  margin: 0 0 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.tea-detail-item {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--border, #eee);
-}
-
-.tea-detail-item dt {
-  font-weight: 600;
-  color: var(--text-h, #333);
-  flex-shrink: 0;
-}
-
-.tea-detail-item dd {
-  margin: 0;
-  text-align: right;
-  color: var(--text, #555);
-}
-
-/* 초보자 팁 강조 박스 */
-.tea-detail-tip {
-  padding: 16px;
-  border-radius: 10px;
-  background: rgba(91, 130, 102, 0.1);
-}
-
-.tea-detail-tip strong {
-  display: block;
-  margin-bottom: 6px;
-  color: #4a6b54;
-}
-
-.tea-detail-tip p {
-  margin: 0;
-  line-height: 1.6;
-  color: var(--text-h, #333);
-}
-
-/* ---------------- 반응형 (모바일) ---------------- */
-@media (max-width: 720px) {
-  .tea-learning-body {
-    /* 모바일에서는 목록과 상세 정보를 위아래로 쌓는다. */
-    grid-template-columns: 1fr;
-  }
-
-  .tea-learning-title {
-    font-size: 26px;
-  }
-}
-
-/* =========================================================
-   차 우리는 과정 가이드 페이지 스타일
-   - 차 선택 / 기본 정보 / 진행률 / 단계 카드 / 이전·다음 버튼 영역을
-     기능별 클래스명으로 명확하게 구분한다.
-   - 학습 페이지와 동일한 녹색(#5b8266) 톤 + 모바일 반응형을 유지한다.
-   ========================================================= */
-
-/* 전체 페이지 컨테이너 */
-.brewing-guide-page {
-  max-width: 640px;
-  margin: 0 auto;
-  padding: 32px 20px 64px;
+* {
   box-sizing: border-box;
 }
 
-/* 페이지 제목 */
-.brewing-guide-title {
-  font-size: 32px;
-  text-align: center;
-  margin: 0 0 28px;
+body {
+  min-width: 320px;
+  background: #f7f4ee;
 }
 
-/* ---------------- 차 선택 영역 ---------------- */
-.tea-selector {
-  margin-bottom: 24px;
+button,
+input,
+select,
+textarea {
+  font: inherit;
 }
 
-.tea-selector-title {
-  font-size: 18px;
-  margin: 0 0 12px;
+.tea-record-page {
+  width: min(960px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 48px 0 72px;
 }
 
-.tea-selector-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-/* 차 선택 버튼 (기본 버튼 스타일 초기화) */
-.tea-selector-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  border: 1px solid var(--border, #ddd);
-  border-radius: 999px;
-  background: var(--bg, #fff);
-  color: var(--text-h, #333);
-  cursor: pointer;
-  transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
-}
-
-.tea-selector-button:hover {
-  border-color: #5b8266;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-}
-
-/* 선택된 차 버튼 강조 */
-.tea-selector-button-selected {
-  border-color: #5b8266;
-  background: #5b8266;
-  color: #fff;
-}
-
-/* ---------------- 기본 정보 영역 ---------------- */
-/* 물 온도 / 우림 시간 / 찻잎 양을 가로로 나란히 표시 */
-.brewing-info {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
+.page-intro {
   margin-bottom: 28px;
 }
 
-.brewing-info-item {
+.eyebrow {
+  margin: 0 0 8px;
+  color: #6b7f55;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.page-intro h1 {
+  margin: 0 0 10px;
+  color: #252018;
+  font-size: 40px;
+  line-height: 1.15;
+}
+
+.page-intro p:last-child {
+  color: #6e6256;
+}
+
+.tea-record-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  padding: 24px;
+  border: 1px solid #ded7c9;
+  border-radius: 8px;
+  background: #fffdf8;
+  box-shadow: 0 12px 32px rgba(72, 58, 38, 0.08);
+}
+
+.form-field {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  align-items: center;
-  padding: 16px 12px;
-  border: 1px solid var(--border, #ddd);
-  border-radius: 12px;
-  background: rgba(91, 130, 102, 0.08);
-}
-
-.brewing-info-label {
-  font-size: 13px;
-  color: var(--text, #666);
-}
-
-.brewing-info-value {
-  font-size: 17px;
-  font-weight: 600;
-  color: var(--text-h, #1a1a1a);
-}
-
-/* ---------------- 진행률 영역 ---------------- */
-.brewing-progress {
-  margin-bottom: 20px;
-}
-
-.brewing-progress-label {
-  margin-bottom: 8px;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text-h, #4a6b54);
-}
-
-/* 진행률 막대 바깥(배경) */
-.brewing-progress-bar {
-  width: 100%;
-  height: 12px;
-  border-radius: 999px;
-  background: var(--border, #e6e6e6);
-  overflow: hidden;
-}
-
-/* 진행률 막대 안쪽(채워지는 부분) */
-.brewing-progress-bar-fill {
-  height: 100%;
-  background: #5b8266;
-  border-radius: 999px;
-  transition: width 0.3s ease;
-}
-
-/* ---------------- 단계 안내 카드 ---------------- */
-/* 현재 단계 카드가 눈에 잘 띄도록 강조 */
-.brewing-step-card {
-  padding: 28px 24px;
-  border: 2px solid #5b8266;
-  border-radius: 16px;
-  background: var(--bg, #fff);
-  box-shadow: 0 4px 16px rgba(91, 130, 102, 0.12);
-  margin-bottom: 24px;
-}
-
-.brewing-step-card-badge {
-  display: inline-block;
-  margin-bottom: 12px;
-  padding: 4px 12px;
-  font-size: 12px;
+  gap: 8px;
+  color: #3d3328;
   font-weight: 700;
-  letter-spacing: 0.5px;
-  color: #fff;
-  background: #5b8266;
-  border-radius: 999px;
 }
 
-.brewing-step-card-title {
-  margin: 0 0 12px;
-  font-size: 22px;
-  color: var(--text-h, #1a1a1a);
+.form-field-full {
+  grid-column: 1 / -1;
 }
 
-.brewing-step-card-description {
-  margin: 0 0 20px;
-  font-size: 16px;
-  line-height: 1.6;
-  color: var(--text, #555);
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  border: 1px solid #d7cebf;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #2f281f;
+  padding: 12px 14px;
 }
 
-/* 주의사항 박스 */
-.brewing-step-card-caution {
-  padding: 14px 16px;
-  border-radius: 10px;
-  background: rgba(91, 130, 102, 0.1);
+.form-field textarea {
+  resize: vertical;
 }
 
-.brewing-step-card-caution strong {
-  display: block;
-  margin-bottom: 6px;
-  font-size: 14px;
-  color: #4a6b54;
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  outline: 3px solid rgba(107, 127, 85, 0.22);
+  border-color: #6b7f55;
 }
 
-.brewing-step-card-caution p {
-  margin: 0;
-  line-height: 1.6;
-  color: var(--text-h, #333);
+.save-button {
+  grid-column: 1 / -1;
+  justify-self: end;
+  min-width: 120px;
+  border: 0;
+  border-radius: 6px;
+  background: #5f714b;
+  color: #ffffff;
+  padding: 12px 20px;
+  font-weight: 700;
+  cursor: pointer;
 }
 
-/* ---------------- 이전 / 다음 버튼 ---------------- */
-.guide-button-group {
+.save-button:hover {
+  background: #4f613d;
+}
+
+.records-section {
+  margin-top: 36px;
+}
+
+.records-section > h2 {
+  margin: 0 0 16px;
+  color: #252018;
+  font-size: 24px;
+}
+
+.tea-record-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.tea-record-card {
+  border: 1px solid #ded7c9;
+  border-radius: 8px;
+  background: #fffdf8;
+  padding: 20px;
+}
+
+.record-card-header {
   display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.record-date {
+  margin: 0 0 6px;
+  color: #85786a;
+  font-size: 14px;
+}
+
+.record-card-header h2 {
+  margin: 0;
+  color: #252018;
+  font-size: 22px;
+}
+
+.delete-button {
+  flex: 0 0 auto;
+  border: 1px solid #c8bca9;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #7b3e34;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  border-color: #9d4f42;
+  background: #fff3f0;
+}
+
+.record-details {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+}
+
+.record-details div {
+  display: grid;
+  grid-template-columns: 56px 1fr;
   gap: 12px;
 }
 
-.guide-button {
-  flex: 1;
-  padding: 14px 20px;
-  font-size: 16px;
-  font-weight: 600;
-  border: 1px solid #5b8266;
-  border-radius: 12px;
-  background: #5b8266;
-  color: #fff;
-  cursor: pointer;
-  transition: background 0.15s, opacity 0.15s;
+.record-details dt {
+  color: #5f714b;
+  font-weight: 700;
 }
 
-.guide-button:hover:not(:disabled) {
-  background: #4a6b54;
+.record-details dd {
+  margin: 0;
+  color: #473c31;
 }
 
-/* 비활성화된 버튼(첫 단계의 '이전', 마지막 단계의 '다음') */
-.guide-button:disabled {
-  background: var(--border, #ccc);
-  border-color: var(--border, #ccc);
-  color: #fff;
-  cursor: not-allowed;
-  opacity: 0.7;
+.record-memo {
+  margin: 18px 0 0;
+  border-top: 1px solid #eee7da;
+  padding-top: 16px;
+  color: #5f5145;
+  white-space: pre-wrap;
 }
 
-/* ---------------- 완료 안내 문구 ---------------- */
-.guide-complete {
-  margin: 24px 0 0;
-  padding: 16px;
+.empty-records {
+  border: 1px dashed #cfc4b4;
+  border-radius: 8px;
+  background: rgba(255, 253, 248, 0.72);
+  color: #7d7063;
+  padding: 28px;
   text-align: center;
-  font-size: 17px;
-  font-weight: 600;
-  color: #4a6b54;
-  background: rgba(91, 130, 102, 0.12);
-  border-radius: 12px;
 }
 
-/* ---------------- 반응형 (모바일) ---------------- */
-@media (max-width: 720px) {
-  .brewing-guide-title {
-    font-size: 26px;
+@media (max-width: 680px) {
+  .tea-record-page {
+    width: min(100% - 28px, 960px);
+    padding: 32px 0 48px;
   }
 
-  /* 기본 정보는 모바일에서도 3칸을 유지하되 글자 크기를 줄인다. */
-  .brewing-info-value {
-    font-size: 15px;
+  .page-intro h1 {
+    font-size: 32px;
   }
 
-  .brewing-step-card {
-    padding: 22px 18px;
+  .tea-record-form {
+    grid-template-columns: 1fr;
+    padding: 18px;
   }
 
-  .brewing-step-card-title {
-    font-size: 20px;
+  .save-button {
+    justify-self: stretch;
   }
 }
