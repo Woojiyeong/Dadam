@@ -23,9 +23,7 @@ function RegisterPage() {
 
     const users = JSON.parse(localStorage.getItem("users")) || [];
 
-    const exists = users.find(
-      (user) => user.username === form.username
-    );
+    const exists = users.find((user) => user.username === form.username);
 
     if (exists) {
       alert("이미 존재하는 아이디입니다.");
@@ -41,7 +39,7 @@ function RegisterPage() {
     localStorage.setItem("users", JSON.stringify(users));
 
     alert("회원가입 완료!");
-    navigate("/login");
+    navigate("/");
   };
 
   return (
@@ -73,9 +71,7 @@ function RegisterPage() {
           onChange={handleChange}
         />
 
-        <button type="submit">
-          회원가입
-        </button>
+        <button type="submit">회원가입</button>
       </form>
     </div>
   );
