@@ -18,7 +18,7 @@ function App() {
 
         <Route path="/brewing/:id" element={<BrewingGuidePage />} />
 
-        <Route path="/timer" elements={<TimerPage />} />
+        <Route path="/timer" element={<TimerPage />} />
 
         <Route path="/record" element={<TeaRecordPage />} />
       </Routes>

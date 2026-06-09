@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import TeaRecordForm from "../components/TeaRecordForm";
 import TeaRecordList from "../components/TeaRecordList";
+import Sidebar from "../components/Sidebar";
+import "./TeaRecordPage.css";
 
 const STORAGE_KEY = "teaRecords";
 
@@ -56,20 +58,28 @@ function TeaRecordPage() {
   };
 
   return (
-    <main className="tea-record-page">
-      <section className="page-intro">
-        <p className="eyebrow">Tea Journal</p>
-        <h1>다도 기록 저장</h1>
-        <p>차를 마신 순간의 향, 맛, 기분과 메모를 남겨보세요.</p>
-      </section>
+    <>
+      <div className="layout">
+        <Sidebar />
 
-      <TeaRecordForm formData={formData} onChange={handleChange} onSubmit={handleSubmit} />
+        <div className="content">
+          <main className="tea-record-page">
+            <section className="page-intro">
+              <p className="eyebrow">Tea Journal</p>
+              <h1>다도 기록 저장</h1>
+              <p>차를 마신 순간의 향, 맛, 기분과 메모를 남겨보세요.</p>
+            </section>
 
-      <section className="records-section">
-        <h2>저장된 기록</h2>
-        <TeaRecordList records={records} onDelete={handleDelete} />
-      </section>
-    </main>
+            <TeaRecordForm formData={formData} onChange={handleChange} onSubmit={handleSubmit} />
+
+            <section className="records-section">
+              <h2>저장된 기록</h2>
+              <TeaRecordList records={records} onDelete={handleDelete} />
+            </section>
+          </main>
+        </div>
+      </div>
+    </>
   );
 }
 
