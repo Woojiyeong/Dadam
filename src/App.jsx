@@ -6,6 +6,8 @@ import RegisterPage from "./pages/RegisterPage";
 import BrewingGuidePage from "./pages/BrewingGuidePage";
 import TimerPage from "./pages/TimerPage";
 import TeaRecordPage from "./pages/TeaRecordPage";
+import TeaStoragePage from "./pages/TeaStoragePage";
+
 function App() {
   return (
     <BrowserRouter>
@@ -21,6 +23,8 @@ function App() {
         <Route path="/timer" element={<TimerPage />} />
 
         <Route path="/record" element={<TeaRecordPage />} />
+
+        <Route path="/storage" element={<TeaStoragePage />} />
       </Routes>
     </BrowserRouter>
   );

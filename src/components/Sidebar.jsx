@@ -12,6 +12,7 @@ function Sidebar() {
         <Link to="/home">홈</Link>
         <Link to="/timer">타이머</Link>
         <Link to="/record">기록장</Link>
+        <Link to="/storage">보관법</Link>
       </nav>
     </aside>
   );

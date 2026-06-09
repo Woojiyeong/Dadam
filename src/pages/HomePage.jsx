@@ -4,7 +4,7 @@ import './HomePage.css';
 import Sidebar from "../components/Sidebar.jsx";
 import TeaCard from "../components/TeaCard.jsx";
 import TeaDetail from "../components/TeaDetail.jsx";
-import { teaList } from "../data/teaData.js";
+import teaData from "../data/teaData.js";
 
 function HomePage() {
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ function HomePage() {
     return <Navigate to="/login" />;
   }
 
-  const filteredTea = teaList.filter((tea) =>
+  const filteredTea = teaData.filter((tea) =>
     tea.name
       .toLowerCase()
       .includes(search.toLowerCase())

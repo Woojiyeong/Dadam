@@ -1,11 +1,11 @@
 import { createContext, useContext, useReducer, useEffect, useRef } from 'react';
-import { teaList } from "../data/teaData";
+import teaData from "../data/teaData";
 
 const STORAGE_KEY = 'dadam_timer_state';
 
 // Fix #1: undefined 방어 — id 없으면 항상 첫 번째 차로 fallback
 function findTea(id) {
-  return teaList.find((t) => t.id === id) ?? teaList[0];
+  return teaData.find((t) => t.id === id) ?? teaData[0];
 }
 
 // Fix #4: timeLeft·savedAt 매초 저장 대신 startedAt+timeAtStart 방식으로 변경
@@ -35,8 +35,8 @@ function loadState() {
 }
 
 const defaultState = {
-  selectedTeaId: teaList[0].id,
-  timeLeft: teaList[0].brewTime,
+  selectedTeaId: teaData[0].id,
+  timeLeft: teaData[0].brewTime,
   isRunning: false,
 };
 
@@ -135,7 +135,7 @@ export function TeaProvider({ children }) {
   const selectedTea = findTea(state.selectedTeaId);
 
   return (
-    <TeaContext.Provider value={{ state, dispatch, selectedTea, teaList }}>
+    <TeaContext.Provider value={{ state, dispatch, selectedTea, teaList: teaData }}>
       {children}
     </TeaContext.Provider>
   );

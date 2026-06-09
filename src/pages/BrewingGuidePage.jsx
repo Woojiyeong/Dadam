@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import brewingData from "../data/brewingData.js";
-import { teaList } from "../data/teaData.js";
+import teaData from "../data/teaData.js";
 import BrewingProgress from "../components/BrewingProgress.jsx";
 import BrewingStepCard from "../components/BrewingStepCard.jsx";
 import StepTimer from "../components/StepTimer.jsx";
@@ -18,7 +18,7 @@ function BrewingGuidePage() {
   );
 
   // 해당 차의 우림 시간 찾기
-  const selectedTeaBrewTime = teaList.find(
+  const selectedTeaBrewTime = teaData.find(
     (tea) => tea.id === Number(id)
   )?.brewTime || 0; // 우림 시간이 없는 경우 0으로 기본값 설정
 
