@@ -2,22 +2,25 @@ import { useState } from 'react';
 import teaList from '../data/teaList';
 import './TeaStorage.css';
 import Sidebar from './Sidebar';
+import Icon from './Icon.jsx';
 
 const AVOID_ICONS = {
-  "직사광선": "☀️",
-  "습기": "💧",
-  "강한 냄새 근처": "👃",
-  "강한 냄새": "👃",
-  "냄새가 강한 물질 근처": "👃",
-  "온도 변화가 큰 곳": "🌡️",
-  "높은 온도": "🌡️",
-  "고온": "🌡️",
-  "냉장 보관": "❄️",
-  "냉장·냉동": "❄️",
-  "밀폐 용기": "🔒",
-  "과도한 건조": "🏜️",
-  "결로": "💦",
+  "직사광선": "sun",
+  "습기": "droplet",
+  "강한 냄새 근처": "odor",
+  "강한 냄새": "odor",
+  "냄새가 강한 물질 근처": "odor",
+  "온도 변화가 큰 곳": "thermometer",
+  "높은 온도": "thermometer",
+  "고온": "thermometer",
+  "냉장 보관": "snowflake",
+  "냉장·냉동": "snowflake",
+  "밀폐 용기": "lock",
+  "과도한 건조": "dry",
+  "결로": "droplet",
 };
+
+const EMOJI_CONTAINER_ICONS = new Set(["🫙", "🥫", "📦", "📄"]);
 
 export default function TeaStorage() {
   const [selectedId, setSelectedId] = useState(teaList[0].id);
@@ -45,7 +48,6 @@ export default function TeaStorage() {
                 <button
                   key={t.id}
                   className={`tea-tab ${tea.id === t.id ? 'active' : ''}`}
-                  style={{ '--tea-color': t.color }}
                   onClick={() => { setSelectedId(t.id); setOpenSection('steps'); }}
                 >
                   {t.name}
@@ -54,7 +56,7 @@ export default function TeaStorage() {
             </div>
 
             {/* 헤더 카드 */}
-            <div className="storage-header-card" style={{ '--tea-color': tea.color }}>
+            <div className="storage-header-card">
               <div className="tea-dot" style={{ background: tea.color }} />
               <div className="header-info">
                 <h3 className="tea-name">{tea.name}</h3>
@@ -62,7 +64,13 @@ export default function TeaStorage() {
                 <p className="storage-summary-text">{s.summary}</p>
               </div>
               <div className="container-badge">
-                <span className="container-icon">{s.container.icon}</span>
+                <span className="container-icon">
+                  {EMOJI_CONTAINER_ICONS.has(s.container.icon) ? (
+                    s.container.icon
+                  ) : (
+                    <Icon name="cup" />
+                  )}
+                </span>
                 <span className="container-name">{s.container.name}</span>
               </div>
             </div>
@@ -70,19 +78,19 @@ export default function TeaStorage() {
             {/* 환경 정보 */}
             <div className="env-row">
               <div className="env-item">
-                <span className="env-icon">🌡️</span>
+                <Icon name="thermometer" className="env-icon" />
                 <span className="env-label">보관 온도</span>
                 <span className="env-value">{s.temperature}</span>
               </div>
               <div className="env-divider" />
               <div className="env-item">
-                <span className="env-icon">💧</span>
+                <Icon name="droplet" className="env-icon" />
                 <span className="env-label">권장 습도</span>
                 <span className="env-value">{s.humidity}</span>
               </div>
               <div className="env-divider" />
               <div className="env-item">
-                <span className="env-icon">📅</span>
+                <Icon name="calendar" className="env-icon" />
                 <span className="env-label">개봉 후</span>
                 <span className="env-value">{s.period.after}</span>
               </div>
@@ -91,12 +99,12 @@ export default function TeaStorage() {
             {/* 개봉 전/후 */}
             <div className="open-compare">
               <div className="open-box">
-                <span className="open-label">🔒 개봉 전</span>
+                <span className="open-label"><Icon name="lock" className="inline-icon" />개봉 전</span>
                 <p>{s.beforeOpen}</p>
               </div>
               <div className="open-arrow">→</div>
-              <div className="open-box open-box--after" style={{ '--tea-color': tea.color }}>
-                <span className="open-label">📭 개봉 후</span>
+              <div className="open-box open-box--after">
+                <span className="open-label"><Icon name="inbox" className="inline-icon" />개봉 후</span>
                 <p>{s.afterOpen}</p>
               </div>
             </div>
@@ -109,9 +117,8 @@ export default function TeaStorage() {
                 <button
                   className={`accordion-header ${openSection === 'steps' ? 'open' : ''}`}
                   onClick={() => toggleSection('steps')}
-                  style={{ '--tea-color': tea.color }}
                 >
-                  <span>📋 단계별 보관 방법</span>
+                  <span><Icon name="list" className="inline-icon" />단계별 보관 방법</span>
                   <span className="accordion-arrow">{openSection === 'steps' ? '▲' : '▼'}</span>
                 </button>
                 {openSection === 'steps' && (
@@ -119,7 +126,7 @@ export default function TeaStorage() {
                     <ol className="steps-list">
                       {s.steps.map((step, i) => (
                         <li key={i} className="step-item">
-                          <span className="step-num" style={{ background: tea.color }}>{i + 1}</span>
+                          <span className="step-num">{i + 1}</span>
                           <span>{step}</span>
                         </li>
                       ))}
@@ -133,9 +140,8 @@ export default function TeaStorage() {
                 <button
                   className={`accordion-header ${openSection === 'tips' ? 'open' : ''}`}
                   onClick={() => toggleSection('tips')}
-                  style={{ '--tea-color': tea.color }}
                 >
-                  <span>💡 알아두면 좋은 팁</span>
+                  <span><Icon name="lightbulb" className="inline-icon" />알아두면 좋은 팁</span>
                   <span className="accordion-arrow">{openSection === 'tips' ? '▲' : '▼'}</span>
                 </button>
                 {openSection === 'tips' && (
@@ -143,7 +149,7 @@ export default function TeaStorage() {
                     <ul className="tips-list">
                       {s.tips.map((tip, i) => (
                         <li key={i} className="tip-item">
-                          <span className="tip-dot" style={{ background: tea.color }} />
+                          <span className="tip-dot" />
                           {tip}
                         </li>
                       ))}
@@ -157,9 +163,8 @@ export default function TeaStorage() {
                 <button
                   className={`accordion-header ${openSection === 'avoid' ? 'open' : ''}`}
                   onClick={() => toggleSection('avoid')}
-                  style={{ '--tea-color': tea.color }}
                 >
-                  <span>❌ 피해야 할 것</span>
+                  <span><Icon name="xCircle" className="inline-icon" />피해야 할 것</span>
                   <span className="accordion-arrow">{openSection === 'avoid' ? '▲' : '▼'}</span>
                 </button>
                 {openSection === 'avoid' && (
@@ -167,7 +172,7 @@ export default function TeaStorage() {
                     <div className="avoid-grid">
                       {s.avoid.map((item, i) => (
                         <div key={i} className="avoid-card">
-                          <span className="avoid-icon">{AVOID_ICONS[item] ?? '⚠️'}</span>
+                          <Icon name={AVOID_ICONS[item] ?? 'alert'} className="avoid-icon" />
                           <span className="avoid-label">{item}</span>
                         </div>
                       ))}
@@ -179,8 +184,8 @@ export default function TeaStorage() {
             </div>
 
             {/* 보관 기간 배너 */}
-            <div className="period-banner" style={{ '--tea-color': tea.color }}>
-              <span>🗓️</span>
+            <div className="period-banner">
+              <Icon name="calendar" />
               <div>
                 <p className="period-before">개봉 전 · {s.period.before}</p>
                 <p className="period-after">개봉 후 · {s.period.after}</p>

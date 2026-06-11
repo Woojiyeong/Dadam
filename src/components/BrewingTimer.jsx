@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { useTea } from '../context/TeaContext';
 import './BrewingTimer.css';
 import Sidebar from './Sidebar';
+import Icon from './Icon.jsx';
 
 function formatTime(seconds) {
   const m = Math.floor(seconds / 60).toString().padStart(2, '0');
@@ -54,7 +55,6 @@ export default function BrewingTimer() {
               <button
                 key={tea.id}
                 className={`tea-btn ${selectedTea.id === tea.id ? 'active' : ''}`}
-                style={{ '--tea-color': tea.color }}
                 onClick={() => dispatch({ type: 'SELECT_TEA', id: tea.id })}
               >
                 {tea.name}
@@ -63,9 +63,9 @@ export default function BrewingTimer() {
           </div>
 
           <div className="tea-info">
-            <span>🌡️ {selectedTea.temperature}°C</span>
-            <span>🍃 {selectedTea.leafAmount}</span>
-            <span>💬 {selectedTea.flavor}</span>
+            <span><Icon name="thermometer" className="inline-icon" />{selectedTea.temperature}°C</span>
+            <span><Icon name="leaf" className="inline-icon" />{selectedTea.leafAmount}</span>
+            <span><Icon name="message" className="inline-icon" />{selectedTea.flavor}</span>
           </div>
 
           <div className="timer-circle-wrap">
@@ -79,7 +79,7 @@ export default function BrewingTimer() {
               <circle
                 cx="100" cy="100" r={RADIUS}
                 fill="none"
-                stroke={selectedTea.color}
+                stroke="var(--accent)"
                 strokeWidth="10"
                 strokeLinecap="round"
                 strokeDasharray={CIRCUMFERENCE}
@@ -109,7 +109,6 @@ export default function BrewingTimer() {
             </button>
             <button
               className={`ctrl-btn main ${isRunning ? 'pause' : 'start'}`}
-              style={{ '--tea-color': selectedTea.color }}
               onClick={() => dispatch({ type: 'SET_RUNNING', value: !isRunning })}
               disabled={isDone}
             >
@@ -119,7 +118,7 @@ export default function BrewingTimer() {
 
           {isDone && (
             <div className="done-message">
-              <p>☕ {selectedTea.name}이(가) 완성되었습니다!</p>
+              <p><Icon name="cup" className="inline-icon" />{selectedTea.name}이(가) 완성되었습니다!</p>
               <p className="done-sub">향: {selectedTea.aroma} · 맛: {selectedTea.flavor}</p>
             </div>
           )}

@@ -1,72 +1,54 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.layout {
-  display: flex;
-  min-height: 100vh;
-  background-color: #f6f7f4;
-}
-
-.content {
-  flex: 1;
-  padding: 30px;
-  overflow-y: auto;
-}
-
 /* 상단 영역 */
 .top-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  margin-bottom: 25px;
+  gap: 18px;
+  margin-bottom: 24px;
 }
 
 .top-bar h2 {
-  color: #2f4f4f;
-  font-size: 28px;
+  font-family: var(--logo-font);
+  color: var(--text-h);
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 0;
+  margin: 0;
 }
 
 /* 로그아웃 버튼 */
 .logout-btn {
-  border: none;
-  background: #2f4f4f;
-  color: white;
-
+  border: 1px solid var(--brand);
+  background: var(--brand);
+  color: var(--surface);
   padding: 10px 18px;
-
-  border-radius: 10px;
-
+  border-radius: 6px;
   cursor: pointer;
-
-  transition: 0.2s;
+  font-weight: 700;
+  white-space: nowrap;
 }
 
 .logout-btn:hover {
-  opacity: 0.9;
+  background: var(--brand-hover);
 }
 
 /* 검색창 */
 .search-bar {
   width: 100%;
-
   padding: 14px 18px;
-
-  border: 1px solid #ddd;
-  border-radius: 12px;
-
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text-h);
   font-size: 16px;
-
-  margin-bottom: 30px;
-
+  margin-bottom: 28px;
   outline: none;
+  box-shadow: 0 8px 22px rgba(72, 58, 38, 0.05);
 }
 
 .search-bar:focus {
-  border-color: #2f4f4f;
+  border-color: var(--accent);
 }
 
 .main-content {
@@ -78,8 +60,25 @@
 /* 카드 영역 */
 .tea-grid {
   display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+}
 
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+.tea-grid > div {
+  min-width: 0;
+}
 
-  gap: 24px;
+@media (max-width: 680px) {
+  .top-bar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .top-bar h2 {
+    font-size: 24px;
+  }
+
+  .logout-btn {
+    width: 100%;
+  }
 }

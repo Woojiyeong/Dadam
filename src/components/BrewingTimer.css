@@ -1,16 +1,18 @@
 .brewing-timer {
-  max-width: 480px;
+  max-width: 560px;
   margin: 0 auto;
-  padding: 2rem 1.5rem;
+  padding: 44px 28px;
   text-align: center;
-  font-family: 'Noto Serif KR', serif;
 }
 
 .timer-title {
-  font-size: 1.5rem;
-  color: #3d2b1f;
-  margin-bottom: 1.5rem;
-  letter-spacing: 0.05em;
+  font-family: var(--logo-font);
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-h);
+  letter-spacing: 0;
+  margin: 0 0 24px;
 }
 
 /* 차 선택 버튼 */
@@ -19,27 +21,30 @@
   flex-wrap: wrap;
   gap: 0.5rem;
   justify-content: center;
-  margin-bottom: 1.2rem;
+  margin-bottom: 18px;
 }
 
 .tea-btn {
-  padding: 0.4rem 1rem;
-  border: 2px solid var(--tea-color, #ccc);
+  padding: 0.45rem 1rem;
+  border: 1px solid var(--border-strong);
   border-radius: 999px;
-  background: transparent;
-  color: #3d2b1f;
+  background: var(--surface);
+  color: var(--text-h);
   font-size: 0.9rem;
+  font-weight: 700;
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
 }
 
 .tea-btn.active {
-  background: var(--tea-color, #ccc);
+  border-color: var(--brand);
+  background: var(--brand);
   color: #fff;
+  letter-spacing: 0;
 }
 
 .tea-btn:hover:not(.active) {
-  background: color-mix(in srgb, var(--tea-color, #ccc) 15%, transparent);
+  background: var(--surface-muted);
 }
 
 /* 차 정보 */
@@ -48,8 +53,20 @@
   justify-content: center;
   gap: 1.2rem;
   font-size: 0.85rem;
-  color: #7a6152;
-  margin-bottom: 1.8rem;
+  color: var(--text-soft);
+  margin-bottom: 28px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  padding: 13px 16px;
+  box-shadow: 0 10px 26px rgba(72, 58, 38, 0.06);
+}
+
+.tea-info span,
+.done-message p {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* 원형 타이머 */
@@ -57,7 +74,13 @@
   position: relative;
   width: 220px;
   height: 220px;
-  margin: 0 auto 1.8rem;
+  margin: 14px auto 34px;
+}
+
+.timer-circle-wrap.small {
+  width: 190px;
+  height: 190px;
+  margin: 12px auto 24px;
 }
 
 .timer-svg {
@@ -72,25 +95,39 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.3rem;
+  gap: 0.15rem;
+  line-height: 1;
+  transform: translateY(4px);
 }
 
 .timer-time {
+  font-family: var(--logo-font);
   font-size: 2.8rem;
   font-weight: 700;
-  color: #3d2b1f;
-  letter-spacing: 0.05em;
+  color: var(--text-h);
+  letter-spacing: 0;
 }
 
 .timer-done {
+  font-family: var(--logo-font);
   font-size: 2.2rem;
   font-weight: 700;
-  color: #7BAE7F;
+  color: var(--accent);
+  letter-spacing: 0;
 }
 
 .timer-label {
   font-size: 0.8rem;
-  color: #a08c7e;
+  color: var(--text-muted);
+  line-height: 1.2;
+}
+
+.timer-circle-wrap.small .timer-display {
+  transform: none;
+}
+
+.timer-circle-wrap.small .timer-time {
+  font-size: 2.25rem;
 }
 
 /* 컨트롤 버튼 */
@@ -98,16 +135,16 @@
   display: flex;
   justify-content: center;
   gap: 1rem;
-  margin-bottom: 1.2rem;
+  margin-bottom: 20px;
 }
 
 .ctrl-btn {
-  padding: 0.65rem 2rem;
-  border-radius: 999px;
+  padding: 0.65rem 1.6rem;
+  border-radius: 6px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  border: none;
+  border: 1px solid transparent;
   transition: opacity 0.2s, transform 0.1s;
 }
 
@@ -116,14 +153,28 @@
 }
 
 .ctrl-btn.reset {
-  background: #f0e9e0;
-  color: #7a6152;
+  border-color: var(--border-strong);
+  background: var(--surface);
+  color: var(--text-soft);
 }
 
 .ctrl-btn.main {
-  background: var(--tea-color, #7BAE7F);
+  border-color: var(--brand);
+  background: var(--brand);
   color: #fff;
   min-width: 110px;
+}
+
+.ctrl-btn.start,
+.ctrl-btn.pause {
+  border-color: var(--brand);
+  background: var(--brand);
+  color: var(--surface);
+}
+
+.ctrl-btn.start:hover,
+.ctrl-btn.pause:hover {
+  background: var(--brand-hover);
 }
 
 .ctrl-btn.main:disabled {
@@ -131,13 +182,22 @@
   cursor: default;
 }
 
+.step-timer-container {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+}
+
 /* 완료 메시지 */
 .done-message {
   margin-top: 0.5rem;
   padding: 1rem 1.5rem;
-  background: #f9f5f0;
-  border-radius: 12px;
-  color: #3d2b1f;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-h);
+  letter-spacing: 0;
+  box-shadow: 0 10px 26px rgba(72, 58, 38, 0.06);
 }
 
 .done-message p {
@@ -146,11 +206,15 @@
 
 .done-sub {
   font-size: 0.85rem;
-  color: #a08c7e;
+  color: var(--text-muted);
 }
 
 /* 반응형 */
 @media (max-width: 480px) {
+  .brewing-timer {
+    padding: 28px 0 36px;
+  }
+
   .tea-info {
     flex-direction: column;
     gap: 0.4rem;

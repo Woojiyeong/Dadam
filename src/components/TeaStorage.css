@@ -1,24 +1,24 @@
 .tea-storage {
-  max-width: 540px;
+  max-width: 680px;
   margin: 0 auto;
-  padding: 2rem 1.5rem;
-  font-family: 'Noto Serif KR', serif;
+  padding: 44px 28px 64px;
 }
 
 .storage-title {
-  font-size: 1.5rem;
+  font-family: var(--logo-font);
+  font-size: 30px;
+  line-height: 1.2;
   font-weight: 700;
-  color: #3d2b1f;
+  color: var(--text-h);
   text-align: center;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.3rem;
+  letter-spacing: 0;
+  margin: 0 0 8px;
 }
 
 .storage-subtitle {
-  font-size: 0.85rem;
-  color: #a08c7e;
+  color: var(--text-soft);
   text-align: center;
-  margin-bottom: 1.6rem;
+  margin: 0 0 26px;
 }
 
 /* 탭 */
@@ -32,22 +32,25 @@
 
 .tea-tab {
   padding: 0.4rem 1rem;
-  border: 2px solid var(--tea-color, #ccc);
+  border: 1px solid var(--border-strong);
   border-radius: 999px;
-  background: transparent;
-  color: #3d2b1f;
+  background: var(--surface);
+  color: var(--text-h);
   font-size: 0.88rem;
+  font-weight: 700;
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
 }
 
 .tea-tab.active {
-  background: var(--tea-color);
+  border-color: var(--brand);
+  background: var(--brand);
   color: #fff;
+  letter-spacing: 0;
 }
 
 .tea-tab:hover:not(.active) {
-  background: color-mix(in srgb, var(--tea-color) 15%, transparent);
+  background: var(--surface-muted);
 }
 
 /* 헤더 카드 */
@@ -55,12 +58,12 @@
   display: flex;
   align-items: flex-start;
   gap: 1rem;
-  background: #fff;
-  border: 1.5px solid color-mix(in srgb, var(--tea-color) 35%, transparent);
-  border-radius: 16px;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
   padding: 1.2rem;
   margin-bottom: 1rem;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 12px 30px rgba(72, 58, 38, 0.08);
 }
 
 .tea-dot {
@@ -78,20 +81,21 @@
 .tea-name {
   font-size: 1.15rem;
   font-weight: 700;
-  color: #3d2b1f;
+  color: var(--text-h);
+  letter-spacing: 0;
   margin: 0 0 0.1rem;
 }
 
 .tea-name-en {
   font-size: 0.78rem;
-  color: #a08c7e;
+  color: var(--text-muted);
   display: block;
   margin-bottom: 0.4rem;
 }
 
 .storage-summary-text {
   font-size: 0.88rem;
-  color: #5a4a3f;
+  color: var(--text);
   margin: 0;
   line-height: 1.5;
 }
@@ -101,20 +105,24 @@
   flex-direction: column;
   align-items: center;
   gap: 0.25rem;
-  background: #faf7f2;
-  border-radius: 10px;
+  background: var(--surface-muted);
+  border: 1px solid var(--border);
+  border-radius: 8px;
   padding: 0.6rem 0.8rem;
   text-align: center;
   flex-shrink: 0;
 }
 
 .container-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-size: 1.5rem;
 }
 
 .container-name {
   font-size: 0.7rem;
-  color: #7a6152;
+  color: var(--text-soft);
   max-width: 80px;
   text-align: center;
   line-height: 1.3;
@@ -124,9 +132,9 @@
 .env-row {
   display: flex;
   align-items: center;
-  background: #fff;
-  border-radius: 12px;
-  border: 1px solid #ede5da;
+  background: var(--surface);
+  border-radius: 8px;
+  border: 1px solid var(--border);
   padding: 0.9rem 1rem;
   margin-bottom: 1rem;
   gap: 0.5rem;
@@ -146,20 +154,21 @@
 
 .env-label {
   font-size: 0.7rem;
-  color: #a08c7e;
+  color: var(--text-muted);
 }
 
 .env-value {
   font-size: 0.82rem;
   font-weight: 600;
-  color: #3d2b1f;
+  color: var(--text-h);
   text-align: center;
+  letter-spacing: 0;
 }
 
 .env-divider {
   width: 1px;
   height: 36px;
-  background: #ede5da;
+  background: var(--border);
 }
 
 /* 개봉 전/후 */
@@ -172,28 +181,29 @@
 
 .open-box {
   flex: 1;
-  background: #faf7f2;
-  border-radius: 12px;
+  background: var(--surface);
+  border-radius: 8px;
   padding: 0.85rem;
-  border: 1px solid #ede5da;
+  border: 1px solid var(--border);
 }
 
 .open-box--after {
-  background: color-mix(in srgb, var(--tea-color) 8%, white);
-  border-color: color-mix(in srgb, var(--tea-color) 30%, transparent);
+  background: var(--surface-soft);
+  border-color: var(--border-strong);
 }
 
 .open-label {
-  display: block;
+  display: inline-flex;
+  align-items: center;
   font-size: 0.75rem;
   font-weight: 700;
-  color: #7a6152;
+  color: var(--text-soft);
   margin-bottom: 0.4rem;
 }
 
 .open-box p {
   font-size: 0.82rem;
-  color: #5a4a3f;
+  color: var(--text);
   margin: 0;
   line-height: 1.5;
 }
@@ -201,7 +211,7 @@
 .open-arrow {
   display: flex;
   align-items: center;
-  color: #c9b9aa;
+  color: var(--border-strong);
   font-size: 1.1rem;
   flex-shrink: 0;
 }
@@ -215,9 +225,9 @@
 }
 
 .accordion-item {
-  border-radius: 12px;
+  border-radius: 8px;
   overflow: hidden;
-  border: 1px solid #ede5da;
+  border: 1px solid var(--border);
 }
 
 .accordion-header {
@@ -226,33 +236,38 @@
   justify-content: space-between;
   align-items: center;
   padding: 0.9rem 1rem;
-  background: #fff;
+  background: var(--surface);
   border: none;
   cursor: pointer;
   font-size: 0.9rem;
   font-weight: 600;
-  color: #3d2b1f;
+  color: var(--text-h);
   text-align: left;
   transition: background 0.15s;
 }
 
+.accordion-header span:first-child {
+  display: inline-flex;
+  align-items: center;
+}
+
 .accordion-header.open {
-  background: color-mix(in srgb, var(--tea-color) 8%, white);
-  border-bottom: 1px solid color-mix(in srgb, var(--tea-color) 25%, transparent);
+  background: var(--surface-soft);
+  border-bottom: 1px solid var(--border);
 }
 
 .accordion-header:hover {
-  background: #faf7f2;
+  background: var(--surface-muted);
 }
 
 .accordion-arrow {
   font-size: 0.75rem;
-  color: #a08c7e;
+  color: var(--text-muted);
 }
 
 .accordion-body {
   padding: 1rem;
-  background: #fff;
+  background: var(--surface);
 }
 
 /* 단계별 */
@@ -270,7 +285,7 @@
   align-items: flex-start;
   gap: 0.75rem;
   font-size: 0.88rem;
-  color: #5a4a3f;
+  color: var(--text);
   line-height: 1.6;
 }
 
@@ -279,6 +294,7 @@
   height: 22px;
   border-radius: 50%;
   color: #fff;
+  background: var(--accent);
   font-size: 0.75rem;
   font-weight: 700;
   display: flex;
@@ -303,7 +319,7 @@
   align-items: flex-start;
   gap: 0.6rem;
   font-size: 0.88rem;
-  color: #5a4a3f;
+  color: var(--text);
   line-height: 1.6;
 }
 
@@ -313,6 +329,7 @@
   border-radius: 50%;
   flex-shrink: 0;
   margin-top: 7px;
+  background: var(--accent);
 }
 
 /* 피해야 할 것 */
@@ -327,9 +344,9 @@
   flex-direction: column;
   align-items: center;
   gap: 0.35rem;
-  background: #fff5f3;
-  border: 1px solid #f5c6be;
-  border-radius: 10px;
+  background: var(--danger-soft);
+  border: 1px solid var(--danger-border);
+  border-radius: 8px;
   padding: 0.7rem 0.5rem;
   text-align: center;
 }
@@ -340,7 +357,7 @@
 
 .avoid-label {
   font-size: 0.72rem;
-  color: #c0392b;
+  color: var(--danger);
   line-height: 1.3;
 }
 
@@ -349,9 +366,9 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  background: color-mix(in srgb, var(--tea-color) 10%, white);
-  border: 1.5px solid color-mix(in srgb, var(--tea-color) 30%, transparent);
-  border-radius: 12px;
+  background: var(--surface-soft);
+  border: 1.5px solid var(--border-strong);
+  border-radius: 8px;
   padding: 1rem 1.2rem;
   font-size: 1.5rem;
 }
@@ -360,11 +377,12 @@
 .period-after {
   font-size: 0.85rem;
   margin: 0.1rem 0;
-  color: #3d2b1f;
+  color: var(--text-h);
+  letter-spacing: 0;
 }
 
 .period-before {
-  color: #7a6152;
+  color: var(--text-soft);
 }
 
 /* 반응형 */

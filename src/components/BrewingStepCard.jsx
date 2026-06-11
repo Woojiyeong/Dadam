@@ -1,3 +1,5 @@
+import Icon from "./Icon.jsx";
+
 // BrewingStepCard 컴포넌트
 // - 현재 단계의 "차 우리는 방법"을 카드 형태로 보여주는 컴포넌트입니다.
 // - 상태(state)는 가지지 않고 props만 사용합니다. (presentational)
@@ -25,7 +27,7 @@ function BrewingStepCard({ step, currentStep, totalSteps }) {
 
       {/* 주의사항 */}
       <div className="brewing-step-card-caution">
-        <strong>주의사항</strong>
+        <strong><Icon name="alert" className="inline-icon" />주의사항</strong>
         <p>{step.caution}</p>
       </div>
     </div>

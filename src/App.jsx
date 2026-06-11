@@ -7,6 +7,7 @@ import BrewingGuidePage from "./pages/BrewingGuidePage";
 import TimerPage from "./pages/TimerPage";
 import TeaRecordPage from "./pages/TeaRecordPage";
 import TeaStoragePage from "./pages/TeaStoragePage";
+import "./App.css";
 
 function App() {
   return (
