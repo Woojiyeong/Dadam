@@ -17,8 +17,12 @@ function BrewingProgress({ currentStep, totalSteps }) {
 
   return (
     <div className="brewing-progress">
-      <div className="brewing-progress-label">
-        {displayStep} / {totalSteps} 단계
+      <div className="brewing-progress-top">
+        <div className="brewing-progress-label">
+          {displayStep} / {totalSteps} 단계
+        </div>
+
+        <span className="brewing-progress-percent">{percent}%</span>
       </div>
 
       {/* 진행률 막대: 안쪽 막대의 너비를 percent% 로 설정 */}
@@ -27,6 +31,17 @@ function BrewingProgress({ currentStep, totalSteps }) {
           className="brewing-progress-bar-fill"
           style={{ width: `${percent}%` }}
         />
+      </div>
+
+      <div className="brewing-progress-dots" aria-hidden="true">
+        {Array.from({ length: totalSteps }, (_, index) => (
+          <span
+            key={index}
+            className={`brewing-progress-dot ${
+              index <= currentStep ? "active" : ""
+            }`}
+          />
+        ))}
       </div>
     </div>
   );

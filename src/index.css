@@ -1,23 +1,64 @@
+@font-face {
+  font-family: 'BookkMyungjo';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkMyungjo-Lt.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'BookkMyungjo';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkMyungjo-Bd.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/woff2/Pretendard-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/woff2/Pretendard-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
+  --bg: #f6f4ee;
+  --surface: #fffdf8;
+  --surface-soft: #fffaf1;
+  --surface-muted: #faf7f2;
+  --border: #ded7c9;
+  --border-strong: #c8bca9;
+  --text: #5f5145;
+  --text-h: #252018;
+  --text-soft: #7d7063;
+  --text-muted: #85786a;
+  --brand: #2f4f4f;
+  --brand-hover: #254242;
+  --accent: #5f714b;
+  --accent-hover: #4f613d;
+  --accent-soft: rgba(95, 113, 75, 0.12);
+  --focus: rgba(95, 113, 75, 0.22);
+  --danger: #8a4a3f;
+  --danger-soft: #fff4ef;
+  --danger-border: #e8c8bf;
   --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
   --social-bg: rgba(244, 243, 236, 0.5);
   --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+    rgba(72, 58, 38, 0.1) 0 10px 20px -4px, rgba(72, 58, 38, 0.05) 0 4px 8px -3px;
 
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --logo-font: 'BookkMyungjo', 'Batang', serif;
+  --pretendard: 'Pretendard', system-ui, 'Segoe UI', sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
-  color-scheme: light dark;
   color: var(--text);
   background: var(--bg);
   font-synthesis: none;
@@ -30,33 +71,16 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
 body {
   margin: 0;
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
 }
 
 #root {
   width: 1126px;
   max-width: 100%;
+  overflow-x: hidden;
   margin: 0 auto;
   text-align: center;
   border-inline: 1px solid var(--border);
@@ -108,4 +132,24 @@ code {
   line-height: 135%;
   padding: 4px 8px;
   background: var(--code-bg);
+}
+
+.ui-icon {
+  width: 1em;
+  height: 1em;
+  flex: 0 0 auto;
+  vertical-align: -0.14em;
+}
+
+.inline-icon {
+  margin-right: 0.35em;
+}
+
+h1 .ui-icon,
+h2 .ui-icon,
+h3 .ui-icon,
+p .ui-icon,
+span .ui-icon,
+button .ui-icon {
+  display: inline-block;
 }

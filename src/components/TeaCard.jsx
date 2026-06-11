@@ -1,4 +1,5 @@
 import './TeaCard.css';
+import Icon from './Icon.jsx';
 
 function TeaCard({ tea }) {
   return (
@@ -15,7 +16,7 @@ function TeaCard({ tea }) {
         {tea.shortDescription}
       </p>
 
-      <p>🍃 {tea.flavor}</p>
+      <p><Icon name="leaf" className="inline-icon" />{tea.flavor}</p>
     </div>
   );
 }

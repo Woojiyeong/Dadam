@@ -240,7 +240,7 @@ const teaList = [
       period: { before: "제조일로부터 6~9개월", after: "개봉 후 1개월 이내" },
       temperature: "5°C 이하 (냉장)",
       humidity: "40% 이하",
-      container: { icon: "🍵", name: "불투명한 완전 밀폐 캔" },
+      container: { icon: "teaCup", name: "불투명한 완전 밀폐 캔" },
       steps: [
         "공기를 완전히 차단할 수 있는 불투명 캔에 담는다",
         "항상 냉장고에 보관하여 신선도를 유지한다",

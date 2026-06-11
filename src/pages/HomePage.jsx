@@ -1,9 +1,10 @@
 import { useNavigate, Navigate } from "react-router-dom";
 import { useState } from "react";
-import './HomePage.css';
+import "./HomePage.css";
 import Sidebar from "../components/Sidebar.jsx";
 import TeaCard from "../components/TeaCard.jsx";
 import TeaDetail from "../components/TeaDetail.jsx";
+import Icon from "../components/Icon.jsx";
 import teaData from "../data/teaData.js";
 
 function HomePage() {
@@ -11,23 +12,19 @@ function HomePage() {
   const [search, setSearch] = useState("");
   const [selectedTea, setSelectedTea] = useState(null);
 
-  const currentUser = JSON.parse(
-    localStorage.getItem("currentUser")
-  );
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
   if (!currentUser) {
     return <Navigate to="/login" />;
   }
 
   const filteredTea = teaData.filter((tea) =>
-    tea.name
-      .toLowerCase()
-      .includes(search.toLowerCase())
+    tea.name.toLowerCase().includes(search.toLowerCase()),
   );
 
   const logout = () => {
     localStorage.removeItem("currentUser");
-    navigate("/login");
+    navigate("/");
   };
 
   return (
@@ -36,16 +33,10 @@ function HomePage() {
         <Sidebar />
 
         <div className="content">
-
           <div className="top-bar">
-            <h2>
-              🍃 {currentUser.name}님, 오늘은 어떤 차를 배우실 건가요?
-            </h2>
+            <h2><Icon name="leaf" className="inline-icon" />{currentUser.name}님, 오늘은 어떤 차를 배우실 건가요?</h2>
 
-            <button
-              className="logout-btn"
-              onClick={logout}
-            >
+            <button className="logout-btn" onClick={logout}>
               로그아웃
             </button>
           </div>
@@ -55,29 +46,23 @@ function HomePage() {
             type="text"
             placeholder="차 검색..."
             value={search}
-            onChange={(e) =>
-              setSearch(e.target.value)
-            }
+            onChange={(e) => setSearch(e.target.value)}
           />
 
           <div className="tea-grid">
-              {filteredTea.map((tea) => (
-                <div
-                  key={tea.id}
-                  onClick={() => setSelectedTea(tea)}
-                >
-                  <TeaCard tea={tea} />
-                </div>
-              ))}
-            </div>
+            {filteredTea.map((tea) => (
+              <div key={tea.id} onClick={() => setSelectedTea(tea)}>
+                <TeaCard tea={tea} />
+              </div>
+            ))}
+          </div>
 
-            {selectedTea && (
-              <TeaDetail
-                selectedTea={selectedTea}
-                onClose={() => setSelectedTea(null)}
-              />
-            )}
-
+          {selectedTea && (
+            <TeaDetail
+              selectedTea={selectedTea}
+              onClose={() => setSelectedTea(null)}
+            />
+          )}
         </div>
       </div>
     </>
