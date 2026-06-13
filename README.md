@@ -69,3 +69,11 @@
 ### Deploy
 
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
+
+
+## 🎬 Demo
+
+서비스의 주요 기능을 영상으로 확인할 수 있습니다.
+
+https://github.com/user-attachments/assets/https://github.com/user-attachments/assets/7e257128-756c-44d6-bf0b-4dc23bc1b7cf
+
